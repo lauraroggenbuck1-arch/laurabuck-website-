@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laura Buck Real Estate – Düsseldorf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:       #0a0a0a;
+      --white:       #fafaf8;
+      --beige:       #e8dfc8;
+      --beige-light: #f0ebe0;
+      --beige-dark:  #c8bfaa;
+      --gold:        #b8a882;
+      --gold-dark:   #8a7d62;
+      --muted:       #6b6560;
+      --teal:        #0e7c7b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ─── Houndstooth ─────────────────────────────────────── */
+    .ht-beige {
+      background-color: var(--beige);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23e8dfc8'/%3E%3Cpath d='M0 0h20v10h-10v10h-10z' fill='%230a0a0a'/%3E%3Cpath d='M20 20h20v10h-10v10h-10z' fill='%230a0a0a'/%3E%3Crect x='20' y='10' width='10' height='10' fill='%230a0a0a'/%3E%3Crect x='10' y='20' width='10' height='10' fill='%230a0a0a'/%3E%3C/svg%3E");
+      background-size: 40px 40px;
+    }
+
+    /* ─── Sticky Banner ───────────────────────────────────── */
+    #banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: #F96A2E;
+      color: #fff;
+      text-align: center;
+      padding: 9px 24px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    #banner a {
+      color: #fff; text-decoration: underline;
+      text-underline-offset: 3px; margin-left: 16px;
+      transition: opacity .2s;
+    }
+    #banner a:hover { opacity: .75; }
+
+    /* ─── Navigation ──────────────────────────────────────── */
+    nav {
+      position: fixed; top: 36px; left: 0; right: 0; z-index: 199;
+      background: var(--black);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 60px; height: 68px;
+      border-bottom: 1px solid rgba(184,168,130,.18);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px; font-weight: 400;
+      letter-spacing: .24em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      opacity: .7; transition: color .25s, opacity .25s;
+    }
+    .nav-links a:hover { color: var(--gold); opacity: 1; }
+
+    /* ─── Shared ──────────────────────────────────────────── */
+    .section-label {
+      display: block;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 18px;
+    }
+    .gold-line        { width: 48px; height: 1px; background: var(--gold); margin: 24px 0; }
+    .gold-line-center { width: 48px; height: 1px; background: var(--gold); margin: 24px auto; }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--black); background: var(--gold);
+      padding: 14px 32px; text-decoration: none;
+      transition: background .25s;
+    }
+    .btn-primary:hover { background: var(--beige-dark); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      opacity: .65; transition: opacity .25s;
+    }
+    .btn-ghost::after { content: '→'; font-size: 14px; }
+    .btn-ghost:hover { opacity: 1; }
+
+    .section { padding: 100px 60px; }
+    .inner   { max-width: 1200px; margin: 0 auto; }
+
+    .sec-head       { margin-bottom: 64px; }
+    .sec-head h2    { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px,4.2vw,62px); font-weight: 300; line-height: 1.1; }
+    .sec-head h2 em { font-style: italic; color: var(--gold); }
+    .sec-head p     { font-size: 13px; font-weight: 300; max-width: 540px; line-height: 1.85; margin-top: 16px; }
+    .sec-head.dark p  { color: rgba(250,250,248,.5); }
+    .sec-head.light p { color: var(--muted); }
+
+    /* ─── Hero ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      margin-top: 104px;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .hero-left {
+      background: var(--black);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 72px 80px 60px;
+      position: relative;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; top: 10%; right: 0; bottom: 10%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 50%, transparent);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: #F96A2E; margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(54px,5.5vw,82px);
+      font-weight: 300; line-height: 1.06;
+      color: var(--white); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px,1.8vw,24px);
+      font-style: italic; font-weight: 300;
+      color: var(--beige-dark); margin-bottom: 32px; line-height: 1.45;
+    }
+    .hero-body {
+      font-size: 13px; font-weight: 300;
+      color: rgba(250,250,248,.6);
+      max-width: 400px; margin-bottom: 48px; line-height: 1.85;
+    }
+    .hero-for {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic; font-weight: 300;
+      color: var(--gold);
+      margin-top: 16px; margin-bottom: 4px;
+      letter-spacing: .04em;
+    }
+    .hero-services {
+      list-style: none;
+      margin-bottom: 44px;
+    }
+    .hero-services li {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(250,250,248,.65);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(184,168,130,.12);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-services li::before {
+      content: '—';
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero-cta { display: inline-flex; gap: 28px; align-items: center; }
+
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero-location {
+      position: absolute; bottom: 28px; left: 28px;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--black); opacity: .45;
+      display: flex; gap: 8px; align-items: center;
+    }
+    .hero-location::before { content: '◆'; font-size: 7px; color: var(--gold-dark); }
+
+    /* ─── Besichtigungen ──────────────────────────────────── */
+    #besichtigungen { background: var(--beige-light); color: var(--black); }
+
+    .price-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 52px;
+    }
+    .price-card {
+      background: var(--white);
+      padding: 52px 48px; position: relative;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+    }
+    .price-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 400; color: var(--black);
+    }
+    .price-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 58px; font-weight: 300;
+      color: var(--black); line-height: 1; margin: 22px 0 4px;
+    }
+    .price-big sub { font-size: 18px; font-weight: 400; color: var(--muted); vertical-align: baseline; }
+    .price-note {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 28px;
+    }
+    .price-features { list-style: none; margin-top: 20px; }
+    .price-features li {
+      font-size: 12px; color: var(--muted);
+      padding: 9px 0; border-bottom: 1px solid rgba(10,10,10,.06);
+      display: flex; gap: 12px;
+    }
+    .price-features li::before { content: '—'; color: var(--gold-dark); flex-shrink: 0; }
+    .testimonial {
+      margin-top: 56px;
+      text-align: center;
+      padding: 0 60px;
+    }
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-style: italic; font-weight: 300;
+      color: var(--black);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .testimonial-author {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+    .price-foot {
+      margin-top: 24px; background: var(--beige);
+      padding: 16px 20px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--black);
+    }
+
+    /* ─── Vermarktung ─────────────────────────────────────── */
+    #vermarktung { background: var(--black); }
+
+    .vmk-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 52px;
+      align-items: start;
+    }
+    .vmk-item { display: flex; flex-direction: column; gap: 20px; }
+    .vmk-item-header { display: flex; flex-direction: column; gap: 4px; }
+    .vmk-item-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .vmk-item-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px; font-weight: 300;
+      color: var(--white); line-height: .9;
+    }
+    .vmk-item-media {
+      aspect-ratio: 9/16;
+      background: #1a1a1a;
+      overflow: hidden;
+      border: 1px solid rgba(184,168,130,.12);
+    }
+    .vmk-item-media video,
+    .vmk-item-media img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .vmk-item-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(250,250,248,.55);
+      line-height: 1.85;
+    }
+    .vmk-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 52px;
+    }
+    .vmk-list { list-style: none; }
+    .vmk-list li {
+      display: flex; gap: 20px; padding: 22px 0;
+      border-bottom: 1px solid rgba(184,168,130,.1);
+    }
+    .vmk-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; font-weight: 300;
+      color: var(--gold); opacity: .35;
+      line-height: 1; flex-shrink: 0; width: 44px;
+    }
+    .vmk-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px; font-weight: 400; color: var(--white); margin-bottom: 4px;
+    }
+    .vmk-text p { font-size: 12px; color: rgba(250,250,248,.48); line-height: 1.7; }
+    .vmk-aside {
+      background: #141414;
+      border: 1px solid rgba(184,168,130,.12);
+      padding: 52px 48px; position: relative;
+    }
+    .vmk-aside::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .vmk-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px,2.2vw,30px);
+      font-style: italic; font-weight: 300;
+      color: var(--white); line-height: 1.45; margin-bottom: 32px;
+    }
+    .vmk-quote strong { color: var(--gold); font-style: normal; font-weight: 400; }
+    .vmk-price-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .vmk-price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 300; color: var(--white);
+    }
+    .vmk-price-split { font-size: 12px; color: rgba(250,250,248,.4); margin-top: 4px; }
+
+    /* ─── Mission ─────────────────────────────────────────── */
+    .mission-box {
+      background: #141414;
+      border: 1px solid rgba(184,168,130,.12);
+      padding: 52px 56px;
+      position: relative;
+      max-width: 860px;
+    }
+    .mission-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .mission-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 2.8vw, 36px);
+      font-style: italic; font-weight: 300;
+      color: var(--white);
+      line-height: 1.45;
+    }
+    .mission-quote strong { color: var(--gold); font-style: normal; font-weight: 400; }
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; align-items: stretch;
+    }
+    .mission-box { max-width: unset; }
+    .mission-img-frame {
+      background: #1a1a1a;
+      border: 1px solid rgba(184,168,130,.12);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 400px;
+    }
+    .mission-img-frame img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .mission-img-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+    }
+    .mission-img-placeholder p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 14px;
+      color: rgba(250,250,248,.25); text-align: center;
+    }
+
+    /* ─── TikTok ──────────────────────────────────────────── */
+    #tiktok { background: #070707; padding: 100px 60px; }
+    .tiktok-head { text-align: center; margin-bottom: 60px; }
+    .tiktok-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px,4.2vw,58px); font-weight: 300; color: var(--white);
+    }
+    .tiktok-head h2 em { font-style: italic; color: var(--gold); }
+    .tiktok-head p { font-size: 13px; font-weight: 300; color: rgba(250,250,248,.4); margin-top: 12px; }
+    .tiktok-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 14px; max-width: 1200px; margin: 0 auto;
+    }
+    .tt-card {
+      display: block;
+      aspect-ratio: 9/16;
+      background: #141414;
+      border: 1px solid rgba(184,168,130,.12);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+    .tt-card:hover { border-color: var(--gold); }
+    .tt-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-color: var(--beige);
+      background-image:
+        linear-gradient(135deg, rgba(10,10,10,.14) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(10,10,10,.14) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(10,10,10,.14) 25%, transparent 25%),
+        linear-gradient(45deg,  rgba(10,10,10,.14) 25%, transparent 25%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+      opacity: .15;
+    }
+    .tt-card-inner {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; padding: 24px;
+      text-align: center;
+    }
+    .tt-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .tt-play-btn {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(184,168,130,.5);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--white);
+      transition: background .25s, border-color .25s;
+    }
+    .tt-card:hover .tt-play-btn {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+    .tt-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-style: italic; font-weight: 300;
+      color: var(--white); line-height: 1.4;
+    }
+    .tt-video-card { cursor: default; }
+    .tt-video-card video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .tt-video-card .tt-video-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 32px 16px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; font-style: italic; font-weight: 300;
+      color: var(--white); text-align: center;
+    }
+
+    /* ─── Push Marketing ──────────────────────────────────── */
+    #push { background: #0c0c0c; }
+
+    .push-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 56px;
+    }
+    .push-card { padding: 52px 48px; }
+    .push-card.dark  { background: #161616; }
+    .push-card.light { background: var(--gold); }
+    .push-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px; font-weight: 400; margin-bottom: 32px;
+    }
+    .push-card.dark  h3 { color: rgba(250,250,248,.38); }
+    .push-card.light h3 { color: var(--black); }
+    .cmp-list { list-style: none; }
+    .cmp-list li { padding: 13px 0; font-size: 13px; display: flex; gap: 14px; }
+    .push-card.dark  .cmp-list li { color: rgba(250,250,248,.52); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .push-card.light .cmp-list li { color: rgba(10,10,10,.82);   border-bottom: 1px solid rgba(10,10,10,.1); }
+    .push-card.dark  .cmp-list li::before { content: '✕'; color: rgba(250,250,248,.22); flex-shrink: 0; }
+    .push-card.light .cmp-list li::before { content: '✓'; color: var(--black); font-weight: 700; flex-shrink: 0; }
+
+    /* ─── Proof Block ─────────────────────────────────────── */
+    .proof-block {
+      margin-top: 64px;
+      text-align: center;
+    }
+    .proof-img {
+      width: 100%; max-width: 720px;
+      border: 1px solid rgba(184,168,130,.2);
+      display: block; margin: 16px auto 0;
+    }
+    .proof-caption {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-top: 16px;
+    }
+
+    /* ─── Über mich ───────────────────────────────────────── */
+    #about { background: var(--black); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 80px; align-items: start; margin-top: 52px;
+    }
+    .about-sticky { position: sticky; top: 120px; }
+    .portrait-frame {
+      aspect-ratio: 3/4; background: #1a1a1a;
+      border: 1px solid rgba(184,168,130,.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .portrait-frame::before {
+      content: '';
+      position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+      border: 1px solid rgba(184,168,130,.14); z-index: 1;
+    }
+    .portrait-ph { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .portrait-ph p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 14px;
+      color: rgba(250,250,248,.28); text-align: center;
+    }
+    .photo-strip {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px; height: 90px; margin-top: 2px;
+    }
+    .photo-strip-item {
+      background: #161616;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-strip-item span {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 10px; color: rgba(250,250,248,.2);
+    }
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px,4vw,58px); font-weight: 300;
+      line-height: 1.1; color: var(--white); margin-bottom: 28px;
+    }
+    .about-text h2 em { font-style: italic; color: var(--gold); }
+    .about-text p { font-size: 14px; font-weight: 300; color: rgba(250,250,248,.62); line-height: 1.9; margin-bottom: 22px; }
+    .about-text p strong { color: var(--gold); font-weight: 400; }
+    .vita { margin-top: 48px; border-top: 1px solid rgba(184,168,130,.1); }
+    .vita-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 20px; padding: 20px 0;
+      border-bottom: 1px solid rgba(184,168,130,.07);
+    }
+    .vita-year { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: var(--gold); }
+    .vita-desc { font-size: 12px; color: rgba(250,250,248,.58); line-height: 1.65; }
+
+    /* ─── Community ───────────────────────────────────────── */
+    #community {
+      position: relative; overflow: hidden;
+      min-height: 580px; display: flex; align-items: center; justify-content: center;
+    }
+    .community-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 0; max-width: 1200px; width: 100%;
+    }
+    .community-video {
+      aspect-ratio: 9/16; height: 580px;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .community-video video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    #community .bg {
+      position: absolute; inset: 0;
+      background-color: var(--beige);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23e8dfc8'/%3E%3Cpath d='M0 0h20v10h-10v10h-10z' fill='%230a0a0a'/%3E%3Cpath d='M20 20h20v10h-10v10h-10z' fill='%230a0a0a'/%3E%3Crect x='20' y='10' width='10' height='10' fill='%230a0a0a'/%3E%3Crect x='10' y='20' width='10' height='10' fill='%230a0a0a'/%3E%3C/svg%3E");
+      background-size: 40px 40px;
+    }
+    #community .overlay { display: none; }
+    .community-body {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 60px; max-width: 780px;
+      background: #0a0a0a;
+    }
+    .community-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px,5vw,72px); font-weight: 300;
+      color: var(--white); line-height: 1.1; margin-bottom: 20px;
+    }
+    .community-body h2 em { font-style: italic; color: var(--gold); }
+    .community-body p { font-size: 14px; font-weight: 300; color: rgba(250,250,248,.68); line-height: 1.9; margin-bottom: 40px; }
+
+    /* ─── International ───────────────────────────────────── */
+    #international { background: #0d0d0d; }
+    .intl-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px; margin-top: 56px;
+    }
+    .loc-card {
+      background: #141414; padding: 56px 48px;
+      position: relative; transition: background .3s;
+    }
+    .loc-card:hover { background: #1c1c1c; }
+    .loc-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(to right, var(--gold), transparent);
+    }
+    .loc-flag { font-size: 30px; margin-bottom: 20px; display: block; }
+    .loc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: var(--white); margin-bottom: 2px; }
+    .loc-region { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+    .loc-card p { font-size: 12px; font-weight: 300; color: rgba(250,250,248,.48); line-height: 1.8; }
+    .loc-tag {
+      display: inline-block; margin-top: 28px;
+      font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--gold); color: var(--black); padding: 6px 14px;
+    }
+
+    /* ─── Kontakt ─────────────────────────────────────────── */
+    #kontakt { background: var(--beige-light); color: var(--black); }
+    .kontakt-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 52px;
+    }
+    .kontakt-left h3 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; margin-bottom: 20px; }
+    .kontakt-left > p { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 32px; }
+    .kdet { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(10,10,10,.08); align-items: flex-start; }
+    .kdet-lbl { font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); width: 80px; flex-shrink: 0; }
+    .kdet-val { font-size: 13px; color: var(--black); }
+    .kdet-val a { color: var(--black); text-decoration: none; }
+    .kdet-val a:hover { color: var(--gold-dark); }
+    .kontakt-form { background: var(--white); padding: 52px 48px; border-top: 2px solid var(--gold); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .fg { margin-bottom: 24px; }
+    .fg label { display: block; font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .fg input, .fg textarea, .fg select {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1px solid rgba(10,10,10,.16);
+      padding: 10px 0; font-family: 'Montserrat', sans-serif;
+      font-size: 13px; color: var(--black); outline: none;
+      transition: border-color .25s; -webkit-appearance: none;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--gold-dark); }
+    .fg textarea { resize: none; height: 96px; }
+    .form-btn {
+      width: 100%; margin-top: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      background: var(--gold); color: var(--black);
+      border: none; padding: 16px 40px;
+      cursor: pointer; transition: background .25s;
+    }
+    .form-btn:hover { background: var(--beige-dark); }
+
+    /* ─── Sticky CTA ─────────────────────────────────────── */
+    .sticky-cta {
+      position: fixed; right: 32px; bottom: 32px;
+      z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    }
+    .sticky-cta-menu {
+      display: flex; flex-direction: column; gap: 0;
+      opacity: 0; pointer-events: none;
+      transform: translateX(10px);
+      transition: opacity .25s, transform .25s;
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(0,0,0,.18);
+    }
+    .sticky-cta-menu.open { opacity: 1; pointer-events: all; transform: translateX(0); }
+    .sticky-cta-menu a {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--black);
+      font-size: 12px; font-weight: 500; letter-spacing: .06em;
+      padding: 16px 22px; text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .sticky-cta-menu a:last-child { border-bottom: none; }
+    .sticky-cta-menu a:hover { background: var(--beige); }
+    .sticky-cta-menu a span { font-size: 16px; }
+    .sticky-btn {
+      background: var(--black); color: var(--white);
+      font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      border: 1px solid var(--gold);
+      padding: 14px 26px; cursor: pointer;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+    .sticky-btn:hover { background: var(--gold); color: var(--black); }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+    footer {
+      background: var(--black); padding: 44px 60px;
+      border-top: 1px solid rgba(184,168,130,.1);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: var(--white); }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(250,250,248,.35); text-decoration: none; transition: color .25s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 11px; color: rgba(250,250,248,.22); }
+
+    /* ─── Impressum ───────────────────────────────────────── */
+    #impressum { background: #0a0a0a; padding: 80px 60px; border-top: 1px solid rgba(184,168,130,.1); }
+    .impressum-inner { max-width: 680px; }
+    .impressum-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--white); margin-bottom: 32px; }
+    .impressum-inner p { font-size: 13px; font-weight: 300; color: rgba(250,250,248,.55); line-height: 2; }
+    .impressum-inner a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ STICKY BANNER ════════════════════ -->
+<div id="banner">
+  Kennenlernpreise für Neukunden – Nur für kurze Zeit
+  <a href="#kontakt">Jetzt anfragen →</a>
+</div>
+
+<!-- ════════════════════ NAVIGATION ═══════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#hero">Laura Buck <span>Real Estate</span></a>
+  <ul class="nav-links">
+    <li><a href="#besichtigungen">Besichtigungen</a></li>
+    <li><a href="#vermarktung">Vermarktung</a></li>
+    <li><a href="#tiktok">Content</a></li>
+    <li><a href="#about">Über mich</a></li>
+    <li><a href="#international">International</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════ HERO ═════════════════════════════ -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Düsseldorf · Königsallee · International</span>
+    <h1 class="hero-title">Damit Sie nur noch<br><em>unterschreiben.</em></h1>
+    <p class="hero-for">Für Hausbesitzer &amp; Immobiliengesellschaften</p>
+    <div class="gold-line"></div>
+    <ul class="hero-services">
+      <li>Durchführung von Besichtigungen</li>
+      <li>Übergaben</li>
+      <li>Leadgenerierung durch Social Media</li>
+      <li>Content Creation</li>
+    </ul>
+    <div class="hero-cta">
+      <a href="#kontakt" class="btn-primary">Anfrage stellen</a>
+      <a href="#vermarktung" class="btn-ghost">Leistungen</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="Vid_HeaderLoop_Final.mp4" type="video/mp4">
+    </video>
+<span class="hero-location">Düsseldorf, NRW</span>
+  </div>
+</section>
+
+<!-- ════════════════════ BESICHTIGUNGEN ═══════════════════ -->
+<section id="besichtigungen" class="section">
+  <div class="inner">
+    <div class="sec-head light">
+      <span class="section-label" style="color:var(--gold-dark)">Düsseldorf · Full-Service</span>
+      <h2 style="color:var(--black)">Besichtigungen &amp;<br><em>Übergaben</em></h2>
+      <p style="color:var(--muted)">
+        Professionelle Repräsentation Ihrer Immobilie direkt vor Ort.
+        Persönlich, zuverlässig, auf Augenhöhe.
+      </p>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <span class="section-label" style="color:var(--gold-dark)">Leistung 01</span>
+        <h3>Professionelle Besichtigung</h3>
+        <div class="gold-line"></div>
+        <div class="price-big">50<sub>€ netto</sub></div>
+        <div class="price-note">&nbsp;</div>
+        <ul class="price-features">
+          <li>Professionelle Durchführung durch Immobilien-Expertin — alle Fragen werden beantwortet, kein Zeitlimit</li>
+          <li>Besichtigungen am Wochenende möglich</li>
+          <li>Kurzes Feedback per Sprachnachricht oder Telefonat direkt nach dem Termin</li>
+          <li>Anfahrt innerhalb Düsseldorfs inklusive, außerhalb gegen Aufpreis</li>
+        </ul>
+        <div class="price-foot">Wochenendaufpreis: 10 € je Besichtigung</div>
+      </div>
+
+      <div class="price-card">
+        <span class="section-label" style="color:var(--gold-dark)">Leistung 02</span>
+        <h3>Wohnungsübergabe</h3>
+        <div class="gold-line"></div>
+        <div class="price-big">100<sub>€ netto</sub></div>
+        <div class="price-note">Inkl. Übergabeprotokoll</div>
+        <ul class="price-features">
+          <li>Erstellung &amp; Aushändigung des Übergabeprotokolls durch eine Immobilien-Expertin — professionell, zuverlässig &amp; sorgfältig</li>
+          <li>Abnahme von Zählerständen &amp; Schlüsselübergabe</li>
+          <li>Dokumentation von Zustand &amp; Mängeln</li>
+          <li>Unterzeichnung durch beide Parteien</li>
+        </ul>
+        <div class="price-foot">Jetzt anfragen · <a href="mailto:ceo@laurabuck-realestate.com" style="color:var(--black);text-decoration:none;">✉ ceo@laurabuck-realestate.com</a></div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <p class="testimonial-quote">„Frau Buck hat mich sehr kompetent und freundlich durch das Objekt geführt."</p>
+      <span class="testimonial-author">— Mietinteressent, Düsseldorf</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ VERMARKTUNG ══════════════════════ -->
+<section id="vermarktung" class="section" style="background:var(--black)">
+  <div class="inner">
+    <div class="sec-head dark">
+      <span class="section-label">Content · Social · Leads</span>
+      <h2 style="color:var(--white)">Werbekampagne<br><em>&amp; Lead-Generierung</em></h2>
+      <p>
+        Maßgeschneiderte Video-Kampagnen direkt aus Ihrer Immobilie. Der Algorithmus sucht die Menschen, die zu Ihnen passen — nicht umgekehrt. Das A und O ist der richtige Content.
+      </p>
+    </div>
+
+    <div class="vmk-items">
+
+      <div class="vmk-item">
+        <div class="vmk-item-header">
+          <span class="vmk-item-label">Maßgeschneidertes Video</span>
+          <span class="vmk-item-num">1</span>
+        </div>
+        <div class="vmk-item-media">
+          <video controls playsinline>
+            <source src="Werbekampagne.MOV" type="video/mp4">
+          </video>
+        </div>
+        <p class="vmk-item-desc">Kein KI-Video — authentisch von einem echten Menschen gezeigt. Ein 30–40 Sekunden langes Video, das Ihr Objekt zum Leben erweckt und Interessenten sofort abholt.</p>
+      </div>
+
+      <div class="vmk-item">
+        <div class="vmk-item-header">
+          <span class="vmk-item-label">Social Media Kampagne</span>
+          <span class="vmk-item-num">2</span>
+        </div>
+        <div class="vmk-item-media">
+          <img src="Punkt%202%20und%203%20/Punkt.2.png" alt="Social Media Kampagne">
+        </div>
+        <p class="vmk-item-desc">Menschen schauen sich heute im Schnitt 900–1.200 Videos am Tag an. Ihre Chance, entdeckt zu werden! Ich trete in Interaktion mit meiner Community &amp; baue Vertrauen auf. So entstehen warme Kunden.</p>
+      </div>
+
+      <div class="vmk-item">
+        <div class="vmk-item-header">
+          <span class="vmk-item-label">Exklusive Leads</span>
+          <span class="vmk-item-num">3</span>
+        </div>
+        <div class="vmk-item-media">
+          <img src="Punkt%202%20und%203%20/Punkt.3.png" alt="Exklusive Leads">
+        </div>
+        <p class="vmk-item-desc">Sie bekommen die Leads sofort ausgehändigt &amp; können sofort in Kontakt treten — Telefonnummer &amp; E-Mail inklusive. Bei Bedarf unterstütze ich Sie auch bei der Terminvereinbarung &amp; nehme meine Termine selber wahr.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ MEINE MISSION ════════════════════ -->
+<section id="mission" class="section" style="background:var(--black)">
+  <div class="inner">
+    <div class="mission-grid">
+    <div class="mission-box">
+      <p class="mission-quote">
+        Meine Mission ist es, Ihnen Arbeit abzunehmen. Keine 94 Anfragen — egal ob qualifiziert oder Geisteranfragen. Ich qualifiziere vor, lege Termine &amp; führe sie durch. Sie müssen nur noch <strong>unterschreiben!</strong>
+      </p>
+      <div class="gold-line"></div>
+      <div class="vmk-price-label">Kampagnenpreis</div>
+      <div class="vmk-price-amount">ab 1.000 <span style="font-size:24px;color:var(--gold);opacity:.6">€ netto</span></div>
+      <div class="vmk-price-split">+ Werbebudget (mind. 300 €)</div>
+      <div style="margin-top:32px"><a href="#kontakt" class="btn-primary">Kampagne starten</a></div>
+    </div>
+
+    <div class="mission-img-frame">
+      <img src="ChatGPT Image 6. Mai 2026, 20_45_15.png" alt="Laura Buck Real Estate">
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ TIKTOK ═══════════════════════════ -->
+<section id="tiktok">
+  <div class="inner">
+    <div class="tiktok-head">
+      <span class="section-label" style="text-align:center;display:block">@laaabuck · TikTok</span>
+      <h2>Kostprobe &amp; <em>Content</em></h2>
+      <p>Historische Villen, Kö-Lage, internationale Objekte — ein Blick in meine Arbeit.</p>
+    </div>
+
+    <div class="tiktok-grid">
+      <div class="tt-card tt-video-card">
+        <video loop playsinline controls>
+          <source src="Mosellage.MOV" type="video/mp4">
+        </video>
+        <div class="tt-video-label">Historische Villen</div>
+      </div>
+      <div class="tt-card tt-video-card">
+        <video loop playsinline controls>
+          <source src="Düsseldorf_Zooviertel.MOV" type="video/mp4">
+        </video>
+        <div class="tt-video-label">Luxus am Zooviertel</div>
+      </div>
+      <div class="tt-card tt-video-card">
+        <video loop playsinline controls>
+          <source src="Kö.MOV" type="video/mp4">
+        </video>
+        <div class="tt-video-label">2 Mins von der Kö</div>
+      </div>
+      <div class="tt-card tt-video-card">
+        <video loop playsinline controls>
+          <source src="Ferienvilla Sizilien.mp4" type="video/mp4">
+        </video>
+        <div class="tt-video-label">Ferienvilla Sizilien</div>
+      </div>
+      <div class="tt-card tt-video-card">
+        <video loop playsinline controls>
+          <source src="0a9444c0fe74446c809f572db0f3a700.MOV" type="video/mp4">
+        </video>
+        <div class="tt-video-label">Vorstellung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PUSH MARKETING ══════════════════ -->
+<section id="push" class="section">
+  <div class="inner">
+    <div class="sec-head dark">
+      <span class="section-label">Portale vs. Laura Buck</span>
+      <h2 style="color:var(--white)">Mit Leadkampagnen<br><em>schneller zum Erfolg</em></h2>
+      <p>
+        Portale verkaufen denselben Lead an 2–3 Makler gleichzeitig — ohne Erfolgsgarantie.
+        Laura Buck setzt auf Push Marketing: exklusive, direkte Interessenten.
+      </p>
+    </div>
+    <div class="push-grid">
+      <div class="push-card dark">
+        <h3>Klassische Portale</h3>
+        <ul class="cmp-list">
+          <li>50–500 € pro Lead — ohne Erfolgsgarantie</li>
+          <li>Derselbe Lead geht an 2–3 Makler gleichzeitig</li>
+          <li>Leads sind nicht tagesfrisch</li>
+          <li>Immobilien konkurrieren direkt nebeneinander</li>
+          <li>Sichtbarkeit nur für aktiv Suchende</li>
+        </ul>
+      </div>
+      <div class="push-card light">
+        <h3>Laura Buck Real Estate</h3>
+        <ul class="cmp-list">
+          <li>Unlimitierte exklusive Leads — niemand teilt</li>
+          <li>Bezahlte Anzeigen = sofortige Reichweite</li>
+          <li>Push-Prinzip: Interessenten erreicht bevor sie suchen</li>
+          <li>Direkte persönliche Begleitung inklusive</li>
+          <li>Leads auf Wunsch vorqualifiziert</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ ÜBER MICH ════════════════════════ -->
+<section id="about" class="section" style="background:var(--black)">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="about-sticky">
+        <span class="section-label">Laura Buck</span>
+        <div class="portrait-frame">
+          <img src="Portrait_final_1.png" alt="Laura Buck" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-label">Über mich</span>
+        <h2>Immobilien sind<br><em>Teil meiner DNA</em></h2>
+        <div class="gold-line"></div>
+        <p>
+          Als Kind war ich bei Besichtigungen und Vermietungen dabei — Immobilien sind für mich
+          keine Branche, sondern eine Leidenschaft. Meine Familie investiert seit Jahrzehnten,
+          und ich bin mit diesem Wissen aufgewachsen.
+        </p>
+        <p>
+          Unsere Ferienvilla in Málaga — die <strong>Villa Rita</strong>, benannt nach meiner Oma —
+          hat mich früh mit dem internationalen Immobilienmarkt vertraut gemacht. Diese persönliche
+          Verbindung macht mich zur idealen Ansprechpartnerin für Objekte in Spanien und darüber hinaus.
+        </p>
+        <p>
+          Nach meinem Master in Betriebswirtschaftslehre (Strategisches Management &amp; Marketing)
+          arbeitete ich im Vertrieb, gründete ein Food &amp; Lifestyle Start-Up und etablierte 2026
+          Laura Buck Real Estate — mit dem Ziel, eine Community aufzubauen, die sich für Architektur,
+          Lifestyle und Immobilien begeistert.
+        </p>
+        <div class="vita">
+          <div class="vita-row">
+            <div class="vita-year">2014</div>
+            <div class="vita-desc">Erste Vertriebserfahrung in zwei Unternehmen — Direktansprache, Coldcalling &amp; Promotion vor Ort</div>
+          </div>
+          <div class="vita-row">
+            <div class="vita-year">2019</div>
+            <div class="vita-desc">Master of Science, Betriebswirtschaftslehre — Strategisches Management &amp; Marketing</div>
+          </div>
+          <div class="vita-row">
+            <div class="vita-year">2022–2025</div>
+            <div class="vita-desc">Gründerin &amp; CEO, Food &amp; Lifestyle Start-Up — <a href="https://www.salonbuck.de" target="_blank" style="color:var(--gold);text-decoration:none">salonbuck.de</a> — Exit 2025</div>
+          </div>
+          <div class="vita-row">
+            <div class="vita-year">aktiv</div>
+            <div class="vita-desc">Mitinhaberin an 2 Online-Shops</div>
+          </div>
+          <div class="vita-row">
+            <div class="vita-year">2026</div>
+            <div class="vita-desc">Gründerin — Laura Buck Real Estate, Düsseldorf</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ COMMUNITY ════════════════════════ -->
+<section id="community">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="community-inner">
+    <div class="community-body">
+      <span class="section-label" style="text-align:center;display:block">Vision</span>
+      <h2>Architektur.<br><em>Lifestyle.</em> Immobilien.</h2>
+      <div class="gold-line-center"></div>
+      <p>
+        Eine Community aufbauen, die sich für Architektur, Lifestyle und Immobilien begeistert —
+        das ist die Vision hinter Laura Buck Real Estate. Folge mir auf TikTok und Instagram
+        und werde Teil dieser Bewegung.
+      </p>
+      <a href="https://tiktok.com/@laaabuck" target="_blank" class="btn-primary">@laaabuck auf TikTok folgen</a>
+    </div>
+    <div class="community-video">
+      <video loop playsinline controls>
+        <source src="0160c58c72da4ff4a31abd9b8f672ae7.MOV" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ INTERNATIONAL ═══════════════════ -->
+<section id="international" class="section">
+  <div class="inner">
+    <div class="sec-head dark">
+      <span class="section-label">Europa · Full-Service</span>
+      <h2 style="color:var(--white)">Internationale<br><em>Märkte</em></h2>
+      <p>Von Düsseldorf bis Málaga — persönliche Marktkenntnisse und zweisprachige Beratung.</p>
+    </div>
+    <div class="intl-grid">
+      <div class="loc-card">
+        <span class="loc-flag">🇩🇪</span>
+        <h3>Düsseldorf</h3>
+        <div class="loc-region">Nordrhein-Westfalen · Heimmarkt</div>
+        <p>Heimmarkt und operativer Schwerpunkt. Direkter Zugang zu Premium-Lagen wie der Königsallee und dem Zooviertel. Full-Service vor Ort — von der Besichtigung bis zur Lead-Kampagne.</p>
+        <span class="loc-tag">Full-Service</span>
+      </div>
+      <div class="loc-card">
+        <span class="loc-flag">🇪🇸</span>
+        <h3>Spanien</h3>
+        <div class="loc-region">Mallorca · Málaga</div>
+        <p>Persönliche Marktkenntnisse in Mallorca und Málaga — letztere durch die Villa Rita meiner Familie. Beratung auf beiden Sprachen möglich: Deutsch & Español.</p>
+        <span class="loc-tag">Zweisprachig · Deutsch &amp; Español</span>
+      </div>
+      <div class="loc-card">
+        <span class="loc-flag">🌍</span>
+        <h3>International</h3>
+        <div class="loc-region">Weltweit · Auf Einladung</div>
+        <p>Sie haben ein außergewöhnliches Objekt — egal wo auf der Welt? Laden Sie mich ein. Ich komme zu Ihnen, drehe den Content vor Ort und bringe Ihre Immobilie auf Social Media.</p>
+        <span class="loc-tag">Auf Einladung · Weltweit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ KONTAKT ══════════════════════════ -->
+<section id="kontakt" class="section" style="background:var(--beige-light);color:var(--black)">
+  <div class="inner">
+    <div class="sec-head light">
+      <span class="section-label" style="color:var(--gold-dark)">Kontakt</span>
+      <h2 style="color:var(--black)">Let's talk.<br><em>Ich freue mich.</em></h2>
+      <p style="color:var(--muted)">
+        Immobiliengesellschaft, Makler oder Eigentümer —
+        ich begleite Sie von der Kampagne bis zum Abschluss.
+      </p>
+    </div>
+
+    <div class="kontakt-grid">
+      <div class="kontakt-left">
+        <h3>Laura Buck<br>Real Estate</h3>
+        <p>Sie möchten mit Laura Buck Real Estate zusammenarbeiten? Rufen Sie mich gerne an oder buchen Sie sich ein unverbindliches Erstgespräch!</p>
+        <div class="kdet">
+          <span class="kdet-lbl">Email</span>
+          <span class="kdet-val"><a href="mailto:ceo@laurabuck-realestate.com">ceo@laurabuck-realestate.com</a></span>
+        </div>
+        <div class="kdet">
+          <span class="kdet-lbl">TikTok</span>
+          <span class="kdet-val"><a href="https://tiktok.com/@laaabuck" target="_blank">@laaabuck</a></span>
+        </div>
+        <div class="kdet">
+          <span class="kdet-lbl">Standort</span>
+          <span class="kdet-val">Düsseldorf, NRW</span>
+        </div>
+        <div class="kdet">
+          <span class="kdet-lbl">Märkte</span>
+          <span class="kdet-val">Düsseldorf · Mallorca · Málaga · International</span>
+        </div>
+        <div style="margin-top:40px">
+          <span class="section-label" style="color:var(--gold-dark)">Discovery Call</span>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:18px;margin-top:6px">Calendly-Buchungslink folgt in Kürze.</p>
+          <a href="mailto:ceo@laurabuck-realestate.com" class="btn-primary">Jetzt Erstgespräch buchen</a>
+        </div>
+      </div>
+
+      <div class="kontakt-form">
+        <span class="section-label" style="color:var(--gold-dark)">Kontaktformular</span>
+        <form>
+          <div class="form-row">
+            <div class="fg"><label>Vorname</label><input type="text" placeholder="Max"></div>
+            <div class="fg"><label>Nachname</label><input type="text" placeholder="Mustermann"></div>
+          </div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="max@beispiel.de"></div>
+          <div class="fg">
+            <label>Ich bin</label>
+            <select>
+              <option value="">Bitte wählen …</option>
+              <option>Immobiliengesellschaft</option>
+              <option>Makler</option>
+              <option>Eigentümer</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Nachricht</label>
+            <textarea placeholder="Erzählen Sie mir von Ihrem Objekt …"></textarea>
+          </div>
+          <button type="submit" class="form-btn">Nachricht senden</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ═══════════════════════════ -->
+<!-- ════════════════════ IMPRESSUM ════════════════════════ -->
+<section id="impressum">
+  <div class="impressum-inner">
+    <h2>Impressum</h2>
+    <p>
+      <strong style="color:var(--white)">Angaben gemäß § 5 TMG</strong><br>
+      Laura Roggenbuck<br>
+      Mindener Str. 80<br>
+      40227 Düsseldorf<br>
+      <br>
+      <strong style="color:var(--white)">Steuer-Nr.</strong><br>
+      133/5270/2690<br>
+      <br>
+      <strong style="color:var(--white)">Kontakt</strong><br>
+      E-Mail: <a href="mailto:ceo@laurabuck-realestate.com">ceo@laurabuck-realestate.com</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Laura Buck Real Estate</div>
+  <ul class="footer-links">
+    <li><a href="#besichtigungen">Besichtigungen</a></li>
+    <li><a href="#vermarktung">Vermarktung</a></li>
+    <li><a href="#about">Über mich</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#impressum">Impressum</a></li>
+    <li><a href="datenschutz.html">Datenschutz</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Laura Buck Real Estate, Düsseldorf</div>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta">
+  <div class="sticky-cta-menu" id="ctaMenu">
+    <a href="tel:+491629188410"><span>📞</span> +49 162 91 88410</a>
+    <a href="https://wa.me/491629188410" target="_blank"><span>💬</span> WhatsApp</a>
+    <a href="mailto:ceo@laurabuck-realestate.com"><span>✉️</span> ceo@laurabuck-realestate.com</a>
+  </div>
+  <button class="sticky-btn" onclick="document.getElementById('ctaMenu').classList.toggle('open')">
+    Jetzt anfragen
+  </button>
+</div>
+
+</body>
+</html>
