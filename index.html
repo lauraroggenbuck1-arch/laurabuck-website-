@@ -10,34 +10,45 @@
 
   <!-- Cookie Banner Styles -->
   <style>
+    #cookie-overlay {
+      position: fixed; inset: 0; z-index: 99998;
+      background: rgba(0,0,0,.7); backdrop-filter: blur(3px);
+    }
     #cookie-banner {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99999;
-      background: #0a0a0a; border-top: 1px solid rgba(184,168,130,.3);
-      padding: 20px 40px; display: flex; align-items: center;
-      justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      position: fixed; top: 50%; left: 50%; z-index: 99999;
+      transform: translate(-50%, -50%);
+      background: #111; border: 1px solid rgba(184,168,130,.2);
+      padding: 48px 52px; max-width: 680px; width: 90%;
+    }
+    #cookie-banner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 400; color: #fafaf8;
+      margin: 0 0 20px;
     }
     #cookie-banner p {
-      font-family: 'Montserrat', sans-serif; font-size: 12px;
-      font-weight: 300; color: rgba(250,250,248,.7);
-      line-height: 1.7; margin: 0; max-width: 780px;
+      font-family: 'Montserrat', sans-serif; font-size: 13px;
+      font-weight: 300; color: rgba(250,250,248,.65);
+      line-height: 1.8; margin: 0 0 36px;
     }
     #cookie-banner a { color: #b8a882; text-decoration: underline; }
-    .cookie-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    .cookie-btns {
+      display: flex; gap: 14px; justify-content: flex-end; flex-wrap: wrap;
+    }
     .cookie-accept {
       font-family: 'Montserrat', sans-serif; font-size: 11px;
-      font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-      background: #b8a882; color: #0a0a0a; border: none;
-      padding: 12px 24px; cursor: pointer; transition: background .2s;
+      font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      background: #2e7d32; color: #fff; border: none;
+      padding: 14px 28px; cursor: pointer; transition: background .2s;
     }
-    .cookie-accept:hover { background: #c8bfaa; }
+    .cookie-accept:hover { background: #388e3c; }
     .cookie-decline {
       font-family: 'Montserrat', sans-serif; font-size: 11px;
       font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-      background: transparent; color: rgba(250,250,248,.5);
-      border: 1px solid rgba(250,250,248,.2);
-      padding: 12px 24px; cursor: pointer; transition: opacity .2s;
+      background: transparent; color: rgba(250,250,248,.6);
+      border: 1px solid rgba(250,250,248,.25);
+      padding: 14px 28px; cursor: pointer; transition: border-color .2s, color .2s;
     }
-    .cookie-decline:hover { opacity: .7; }
+    .cookie-decline:hover { border-color: rgba(250,250,248,.5); color: #fafaf8; }
   </style>
 
   <!-- TikTok Pixel — nur nach Zustimmung -->
@@ -73,16 +84,19 @@
       var consent = getCookie('cookie_consent');
       if (consent === 'accepted') { loadTikTokPixel(); }
       if (consent === '') {
-        document.getElementById('cookie-banner').style.display = 'flex';
+        document.getElementById('cookie-banner').style.display = 'block';
+        document.getElementById('cookie-overlay').style.display = 'block';
       }
       document.getElementById('cookie-accept').addEventListener('click', function() {
         setCookie('cookie_consent', 'accepted', 365);
         document.getElementById('cookie-banner').style.display = 'none';
+        document.getElementById('cookie-overlay').style.display = 'none';
         loadTikTokPixel();
       });
       document.getElementById('cookie-decline').addEventListener('click', function() {
         setCookie('cookie_consent', 'declined', 365);
         document.getElementById('cookie-banner').style.display = 'none';
+        document.getElementById('cookie-overlay').style.display = 'none';
       });
     });
   </script>
@@ -1295,13 +1309,15 @@
 </div>
 
 <!-- Cookie Banner -->
+<div id="cookie-overlay" style="display:none;"></div>
 <div id="cookie-banner" style="display:none;">
+  <h3>Datenschutz &amp; Cookies</h3>
   <p>
-    Wir verwenden Cookies und ähnliche Technologien, um dein Nutzungserlebnis zu verbessern und Werbeanzeigen zu personalisieren (TikTok Pixel). Mit Klick auf „Akzeptieren" stimmst du dem zu. Mehr Infos in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+    Wenn Sie auf „Alle Cookies akzeptieren" klicken, stimmen Sie der Speicherung von Cookies auf Ihrem Gerät zu, um die Websitenavigation zu verbessern, die Websitenutzung zu analysieren und unsere Marketingbemühungen (z.&nbsp;B. personalisierte Anzeigen via TikTok Pixel) zu unterstützen. Wenn Sie auf „Alle ablehnen" klicken, werden nur unbedingt erforderliche Cookies verwendet. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
   </p>
   <div class="cookie-btns">
-    <button class="cookie-decline" id="cookie-decline">Ablehnen</button>
-    <button class="cookie-accept" id="cookie-accept">Akzeptieren</button>
+    <button class="cookie-decline" id="cookie-decline">Alle ablehnen</button>
+    <button class="cookie-accept" id="cookie-accept">Alle Cookies akzeptieren</button>
   </div>
 </div>
 
