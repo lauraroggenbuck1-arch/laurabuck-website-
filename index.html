@@ -7,6 +7,85 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Cookie Banner Styles -->
+  <style>
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99999;
+      background: #0a0a0a; border-top: 1px solid rgba(184,168,130,.3);
+      padding: 20px 40px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    #cookie-banner p {
+      font-family: 'Montserrat', sans-serif; font-size: 12px;
+      font-weight: 300; color: rgba(250,250,248,.7);
+      line-height: 1.7; margin: 0; max-width: 780px;
+    }
+    #cookie-banner a { color: #b8a882; text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    .cookie-accept {
+      font-family: 'Montserrat', sans-serif; font-size: 11px;
+      font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+      background: #b8a882; color: #0a0a0a; border: none;
+      padding: 12px 24px; cursor: pointer; transition: background .2s;
+    }
+    .cookie-accept:hover { background: #c8bfaa; }
+    .cookie-decline {
+      font-family: 'Montserrat', sans-serif; font-size: 11px;
+      font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+      background: transparent; color: rgba(250,250,248,.5);
+      border: 1px solid rgba(250,250,248,.2);
+      padding: 12px 24px; cursor: pointer; transition: opacity .2s;
+    }
+    .cookie-decline:hover { opacity: .7; }
+  </style>
+
+  <!-- TikTok Pixel — nur nach Zustimmung -->
+  <script>
+    function loadTikTokPixel() {
+      !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+        ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+        ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+        ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+        ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
+        ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;
+        ttq._o=ttq._o||{};ttq._o[e]=n||{};n=document.createElement("script");
+        n.type="text/javascript";n.async=!0;n.src=r+"?sdkid="+e+"&lib="+t;
+        e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+        ttq.load('D825CABC77U6164CFPSG');
+        ttq.page();
+      }(window, document, 'ttq');
+    }
+
+    function setCookie(name, value, days) {
+      var d = new Date(); d.setTime(d.getTime()+(days*24*60*60*1000));
+      document.cookie = name+"="+value+";expires="+d.toUTCString()+";path=/";
+    }
+    function getCookie(name) {
+      var ca = document.cookie.split(';');
+      for(var i=0;i<ca.length;i++){var c=ca[i].trim();if(c.indexOf(name+"=")==0)return c.substring(name.length+1);}
+      return "";
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      var consent = getCookie('cookie_consent');
+      if (consent === 'accepted') { loadTikTokPixel(); }
+      if (consent === '') {
+        document.getElementById('cookie-banner').style.display = 'flex';
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        setCookie('cookie_consent', 'accepted', 365);
+        document.getElementById('cookie-banner').style.display = 'none';
+        loadTikTokPixel();
+      });
+      document.getElementById('cookie-decline').addEventListener('click', function() {
+        setCookie('cookie_consent', 'declined', 365);
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+    });
+  </script>
   <style>
     :root {
       --black:       #0a0a0a;
@@ -1213,6 +1292,17 @@
   <button class="sticky-btn" onclick="document.getElementById('ctaMenu').classList.toggle('open')">
     Jetzt anfragen
   </button>
+</div>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="display:none;">
+  <p>
+    Wir verwenden Cookies und ähnliche Technologien, um dein Nutzungserlebnis zu verbessern und Werbeanzeigen zu personalisieren (TikTok Pixel). Mit Klick auf „Akzeptieren" stimmst du dem zu. Mehr Infos in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+  </p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" id="cookie-decline">Ablehnen</button>
+    <button class="cookie-accept" id="cookie-accept">Akzeptieren</button>
+  </div>
 </div>
 
 </body>
