@@ -53,6 +53,16 @@
 
   <!-- TikTok Pixel — nur nach Zustimmung -->
   <script>
+    function loadMetaPixel() {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '3216668055387739');
+      fbq('track', 'PageView');
+    }
+
     function loadTikTokPixel() {
       !function (w, d, t) {
         w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
@@ -82,7 +92,7 @@
 
     window.addEventListener('DOMContentLoaded', function() {
       var consent = getCookie('cookie_consent');
-      if (consent === 'accepted') { loadTikTokPixel(); }
+      if (consent === 'accepted') { loadTikTokPixel(); loadMetaPixel(); }
       if (consent === '') {
         document.getElementById('cookie-banner').style.display = 'block';
         document.getElementById('cookie-overlay').style.display = 'block';
@@ -92,6 +102,7 @@
         document.getElementById('cookie-banner').style.display = 'none';
         document.getElementById('cookie-overlay').style.display = 'none';
         loadTikTokPixel();
+        loadMetaPixel();
       });
       document.getElementById('cookie-decline').addEventListener('click', function() {
         setCookie('cookie_consent', 'declined', 365);
