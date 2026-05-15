@@ -825,20 +825,20 @@
 
     /* ─── Mobile ──────────────────────────────────────────── */
     @media (max-width: 768px) {
-      /* Navigation */
-      nav { padding: 0 20px; height: 56px; top: 30px; }
-      .nav-links { display: none; }
-      .nav-logo { font-size: 13px; }
+      /* Banner — versteckt auf Mobile */
+      #banner { display: none; }
 
-      /* Banner */
-      #banner { font-size: 10px; padding: 7px 16px; }
+      /* Navigation */
+      nav { padding: 0 20px; height: 60px; top: 0; }
+      .nav-links { display: none; }
+      .nav-logo { font-size: 15px; letter-spacing: .2em; }
 
       /* Sections */
       .section { padding: 64px 24px; }
       .inner { max-width: 100%; }
 
       /* Hero */
-      #hero { grid-template-columns: 1fr; margin-top: 86px; min-height: auto; }
+      #hero { grid-template-columns: 1fr; margin-top: 60px; min-height: auto; }
       .hero-left { padding: 48px 24px; }
       .hero-left::after { display: none; }
       .hero-right { height: 60vw; min-height: 260px; }
