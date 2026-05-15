@@ -1320,15 +1320,15 @@
 
       <div class="kontakt-form">
         <span class="section-label" style="color:var(--gold-dark)">Kontaktformular</span>
-        <form>
+        <form action="https://formspree.io/f/meenyjgd" method="POST">
           <div class="form-row">
-            <div class="fg"><label>Vorname</label><input type="text" placeholder="Max"></div>
-            <div class="fg"><label>Nachname</label><input type="text" placeholder="Mustermann"></div>
+            <div class="fg"><label>Vorname</label><input type="text" name="vorname" placeholder="Max"></div>
+            <div class="fg"><label>Nachname</label><input type="text" name="nachname" placeholder="Mustermann"></div>
           </div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="max@beispiel.de"></div>
+          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="max@beispiel.de"></div>
           <div class="fg">
             <label>Ich bin</label>
-            <select>
+            <select name="ich_bin">
               <option value="">Bitte wählen …</option>
               <option>Immobiliengesellschaft</option>
               <option>Makler</option>
@@ -1338,7 +1338,7 @@
           </div>
           <div class="fg">
             <label>Nachricht</label>
-            <textarea placeholder="Erzählen Sie mir von Ihrem Objekt …"></textarea>
+            <textarea name="nachricht" placeholder="Erzählen Sie mir von Ihrem Objekt …"></textarea>
           </div>
           <button type="submit" class="form-btn">Nachricht senden</button>
         </form>
