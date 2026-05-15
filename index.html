@@ -858,8 +858,22 @@
 
       .vmk-items { grid-template-columns: 1fr; gap: 40px; }
 
-      /* TikTok grid */
-      .tiktok-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      /* TikTok grid — horizontal scroll */
+      .tiktok-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 12px;
+      }
+      .tiktok-grid::-webkit-scrollbar { display: none; }
+      .tt-card {
+        flex: 0 0 52vw;
+        max-width: 200px;
+        scroll-snap-align: start;
+        aspect-ratio: 9/16;
+      }
 
       /* Community */
       .community-inner { grid-template-columns: 1fr; }
