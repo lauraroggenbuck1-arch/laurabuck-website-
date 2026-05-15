@@ -822,6 +822,76 @@
     .impressum-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--white); margin-bottom: 32px; }
     .impressum-inner p { font-size: 13px; font-weight: 300; color: rgba(250,250,248,.55); line-height: 2; }
     .impressum-inner a { color: var(--gold); text-decoration: none; }
+
+    /* ─── Mobile ──────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Navigation */
+      nav { padding: 0 20px; height: 56px; top: 30px; }
+      .nav-links { display: none; }
+      .nav-logo { font-size: 13px; }
+
+      /* Banner */
+      #banner { font-size: 10px; padding: 7px 16px; }
+
+      /* Sections */
+      .section { padding: 64px 24px; }
+      .inner { max-width: 100%; }
+
+      /* Hero */
+      #hero { grid-template-columns: 1fr; margin-top: 86px; min-height: auto; }
+      .hero-left { padding: 48px 24px; }
+      .hero-left::after { display: none; }
+      .hero-right { height: 60vw; min-height: 260px; }
+      .hero-title { font-size: 44px; }
+      .hero-cta { flex-direction: column; gap: 16px; }
+
+      /* Grids → single column */
+      .price-grid,
+      .push-grid,
+      .kontakt-grid,
+      .mission-grid,
+      .intl-grid,
+      .vmk-grid { grid-template-columns: 1fr; gap: 2px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-sticky { position: static; }
+
+      .vmk-items { grid-template-columns: 1fr; gap: 40px; }
+
+      /* TikTok grid */
+      .tiktok-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+      /* Community */
+      .community-inner { grid-template-columns: 1fr; }
+      .community-video { display: none; }
+      .community-body { padding: 48px 24px; max-width: 100%; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+
+      /* Impressum */
+      #impressum { padding: 48px 24px; }
+
+      /* Kontakt Formular */
+      .kontakt-form { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      /* Cookie Banner */
+      #cookie-banner { padding: 32px 24px; }
+
+      /* Sticky CTA */
+      .sticky-cta { right: 16px; bottom: 16px; }
+
+      /* Large numbers */
+      .vmk-item-num { font-size: 72px; }
+    }
+
+    @media (max-width: 480px) {
+      .tiktok-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 36px; }
+      .price-card { padding: 36px 24px; }
+    }
   </style>
 </head>
 <body>
